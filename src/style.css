@@ -1,15 +1,17 @@
 * {
   margin: 0;
   padding: 0;
+  font-family: Helvetica, sans-serif;
 }
 
 body {
-  font-family: Helvetica, sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .card {
   max-width: 715px;
-  margin: 125px auto;
   background: white;
   box-shadow: 0 0 20px rgba(77, 52, 52, 0.6);
 }
@@ -23,6 +25,7 @@ body {
 
 .la-sync-alt {
   font-size: 26px;
+  cursor: pointer;
 }
 
 .enter-task {
@@ -54,6 +57,7 @@ body {
 .btn-send {
   border: none;
   background: transparent;
+  cursor: pointer;
 }
 
 .la-undo {
@@ -67,6 +71,10 @@ body {
   justify-content: space-between;
   padding: 16px 14px;
   border-bottom: 1px solid #e2e0e0ea;
+}
+
+.task.dragging :where(.update, i) {
+  opacity: 0;
 }
 
 .update {
