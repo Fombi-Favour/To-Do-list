@@ -1,4 +1,2 @@
-import showContents from './subScript'
-import './style.css'
-
-console.log(showContents());
+// import showContents from './subScript.js';
+import './style.css';
