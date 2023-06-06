@@ -1,5 +1,3 @@
-const showContents = () => {
-    return 'This is my first webpack project'
-}
+const showContents = () => 'This is my first webpack project';
 
 export default showContents;
