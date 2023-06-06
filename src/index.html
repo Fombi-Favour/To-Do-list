@@ -8,38 +8,21 @@
 </head>
 <body>
     <main class="card">
+        <!-- header -->
         <div class="head">
             <span>Today's To Do</span>
             <i class="las la-sync-alt"></i>
         </div>
+        <!-- form -->
         <div class="enter-task">
             <form id="forms">
                 <input type="text" class="input-col" id="today-todo" placeholder="Add to your list...">
                 <button type="submit" class="btn-send"><i class="las la-undo"></i></button>
             </form>
         </div>
-        <div class="task-list">
-            <div class="task">
-                <div class="update">
-                    <input type="checkbox"id="complete">
-                    <p>Wash the dishes.</p>
-                </div>
-                <div class="icons">
-                    <i class="las la-ellipsis-v"></i>
-                    <i class="las la-trash-alt"></i>
-                </div>
-            </div>
-            <div class="task">
-                <div class="update">
-                    <input type="checkbox"id="complete">
-                    <p>Wash the dishes.</p>
-                </div>
-                <div class="icons">
-                    <i class="las la-ellipsis-v"></i>
-                    <i class="las la-trash-alt"></i>
-                </div>
-            </div>
-        </div>
+        <!-- To Do task list -->
+        <div class="task-list"></div>
+        <!-- clear all button -->
         <div class="clear-all">
             <button type="button" class="clear-complete">Clear all completed</button>
         </div>
