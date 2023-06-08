@@ -67,6 +67,12 @@ class Functionality {
 
     // Update the description to the task
     const edit = todoTask.querySelector('.updateDesc');
+
+    edit.addEventListener('input', () => {
+      newData.description = edit.value;
+      Functionality.updateStorage(newData.index, newData);
+    });
+
     edit.addEventListener('focus', () => {
       const allItems = document.querySelectorAll('.task-list, .task');
       const move = todoTask.querySelector('#move');
@@ -94,7 +100,17 @@ class Functionality {
         description.classList.remove('checked');
         inputCheck.checked = false;
       }
+      Functionality.updateStorage(newData.index, newData);
     });
+  }
+
+  static updateStorage(id, updateData) {
+    const data = Functionality.localGetItem();
+    const updateId = data.findIndex((todo) => todo.index === id);
+    if (updateData !== -1) {
+      data[updateId] = updateData;
+      localStorage.setItem('todoData', JSON.stringify(data));
+    }
   }
 
   static showStorage() {
