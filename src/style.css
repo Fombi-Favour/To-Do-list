@@ -73,6 +73,10 @@ body {
   border-bottom: 1px solid #e2e0e0ea;
 }
 
+.task.active {
+  background: #fffeca;
+}
+
 .task.dragging :where(.update, i) {
   opacity: 0;
 }
@@ -81,6 +85,14 @@ body {
   display: flex;
   align-items: center;
   gap: 16px;
+}
+
+.updateDesc{
+  width: 590px;
+  height: 39px;
+  outline: none;
+  border: none;
+  font-size: 16px;
 }
 
 .la-ellipsis-v,
