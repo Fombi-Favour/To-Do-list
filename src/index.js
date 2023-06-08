@@ -18,9 +18,9 @@ form.addEventListener('submit', (e) => {
     index = 0;
   }
   const completed = false;
-
+  const errorMsg = document.querySelector('.warning');
   if (content === '') {
-    console.error('Fill info!!!');
+    errorMsg.innerText = 'Fill in this form!!!';
   } else {
     const todo = new TodoData(index, content, completed);
     crud.addData(todo);
