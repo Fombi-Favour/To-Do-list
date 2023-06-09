@@ -16,7 +16,7 @@ form.addEventListener('submit', (e) => {
   if (dataIndex.length > 0) {
     index = dataIndex[dataIndex.length - 1].index + 1;
   } else {
-    index = 0;
+    index = 1;
   }
   const completed = false;
   const errorMsg = document.querySelector('.warning');
