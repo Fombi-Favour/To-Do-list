@@ -16,7 +16,7 @@ class Functionality {
     const data = Functionality.localGetItem();
     data.push(newData);
     localStorage.setItem('todoData', JSON.stringify(data));
-  }
+  };
 
   // displays the to do list data
   displayData = (newData) => {
@@ -90,20 +90,40 @@ class Functionality {
       });
     });
 
+    // checked if complete is true
     const checked = todoTask.querySelector('.complete');
     checked.addEventListener('change', () => {
       newData.completed = !newData.completed;
       if (newData.completed === true) {
         inputCheck.checked = true;
         description.classList.add('checked');
+        Functionality.deleteComplete();
       } else {
         description.classList.remove('checked');
         inputCheck.checked = false;
       }
       Functionality.updateStorage(newData.index, newData);
     });
+
+    // delete each task of the list
+    const trash = todoTask.querySelector('#delete');
+    trash.addEventListener('click', () => {
+      Functionality.deleteData(newData.index);
+      todoList.removeChild(todoTask);
+    });
+  };
+
+  // delete data
+  static deleteData(id) {
+    const data = Functionality.localGetItem();
+    const updatedId = data.findIndex((todo) => todo.index === id);
+    if (updatedId !== -1) {
+      data.splice(updatedId, 1);
+      localStorage.setItem('todoData', JSON.stringify(data));
+    }
   }
 
+  // update data in local storage
   static updateStorage(id, updateData) {
     const data = Functionality.localGetItem();
     const updateId = data.findIndex((todo) => todo.index === id);
@@ -113,6 +133,21 @@ class Functionality {
     }
   }
 
+  // delete list of data if complete is checked true
+  static deleteComplete() {
+    const data = Functionality.localGetItem();
+
+    // filter complete task
+    const complete = data.filter((task) => task.completed);
+    complete.forEach((task) => {
+      const updatedId = data.findIndex((todo) => todo.index === task.index);
+      if (updatedId !== -1) {
+        Functionality.deleteData(updatedId);
+      }
+    });
+  }
+
+  // display the data in local storage
   static showStorage() {
     const crud = new Functionality();
     const data = Functionality.localGetItem();
