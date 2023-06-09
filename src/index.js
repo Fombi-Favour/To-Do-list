@@ -4,6 +4,7 @@ import './style.css';
 
 const crud = new Functionality();
 const form = document.querySelector('#forms');
+const clear = document.querySelector('.clear-complete');
 
 document.addEventListener('DOMContentLoaded', Functionality.showStorage);
 
@@ -29,3 +30,5 @@ form.addEventListener('submit', (e) => {
 
   document.querySelector('#today-todo').value = '';
 });
+
+Functionality.deleteComplete();
