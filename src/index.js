@@ -30,5 +30,3 @@ form.addEventListener('submit', (e) => {
 
   document.querySelector('#today-todo').value = '';
 });
-
-Functionality.deleteComplete();
