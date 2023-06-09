@@ -115,12 +115,13 @@ class Functionality {
 
   // delete data
   static deleteData(id) {
-    const data = Functionality.localGetItem();
-    const updatedId = data.findIndex((todo) => todo.index === id);
-    if (updatedId !== -1) {
-      data.splice(updatedId, 1);
-      localStorage.setItem('todoData', JSON.stringify(data));
-    }
+    let data = Functionality.localGetItem();
+    // eslint-disable-next-line no-unused-vars
+    data = data.filter((todo) => todo.index !== id).map((todo, index) => {
+      todo.index = index + 1;
+      return todo;
+    });
+    localStorage.setItem('todoData', JSON.stringify(data));
   }
 
   // update data in local storage
