@@ -135,14 +135,13 @@ class Functionality {
 
   // delete list of data if complete is checked true
   static deleteComplete() {
-    let data = Functionality.localGetItem();
+    let completeData = Functionality.localGetItem();
     // filter complete task
-    // eslint-disable-next-line no-unused-vars
-    data = data.filter((todo) => !todo.completed).map((todo, index) => {
+    completeData = completeData.filter((todo) => !todo.completed).map((todo, index) => {
       todo.index = index + 1;
       return todo;
     });
-    localStorage.setItem('todoData', JSON.stringify(data));
+    localStorage.setItem('todoData', JSON.stringify(completeData));
 
     const complete = document.querySelectorAll('.checked');
     complete.forEach((todos) => {
