@@ -97,7 +97,6 @@ class Functionality {
       if (newData.completed === true) {
         inputCheck.checked = true;
         description.classList.add('checked');
-        Functionality.deleteComplete();
       } else {
         description.classList.remove('checked');
         inputCheck.checked = false;
@@ -136,15 +135,19 @@ class Functionality {
 
   // delete list of data if complete is checked true
   static deleteComplete() {
-    const data = Functionality.localGetItem();
-
+    let data = Functionality.localGetItem();
     // filter complete task
-    const complete = data.filter((task) => task.completed);
-    complete.forEach((task) => {
-      const updatedId = data.findIndex((todo) => todo.index === task.index);
-      if (updatedId !== -1) {
-        Functionality.deleteData(updatedId);
-      }
+    // eslint-disable-next-line no-unused-vars
+    data = data.filter((todo) => !todo.completed).map((todo, index) => {
+      todo.index = index + 1;
+      return todo;
+    });
+    localStorage.setItem('todoData', JSON.stringify(data));
+
+    const complete = document.querySelectorAll('.checked');
+    complete.forEach((todos) => {
+      const item = todos.closest('.task');
+      item.parentNode.removeChild(item);
     });
   }
 
