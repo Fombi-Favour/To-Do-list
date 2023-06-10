@@ -1,41 +1,34 @@
+import TodoData from './modules/todoTask.js';
+import Functionality from './modules/crudData.js';
 import './style.css';
 
-const todoData = [
-  {
-    index: 1,
-    description: 'Learn JavaScript',
-    completed: false,
-  },
-  {
-    index: 2,
-    description: 'wash the dishes',
-    completed: false,
-  },
-  {
-    index: 3,
-    description: 'complete To Do list project',
-    completed: false,
-  },
-  {
-    index: 4,
-    description: 'Manage all your lists in one place',
-    completed: false,
-  },
-];
+const crud = new Functionality();
+const form = document.querySelector('#forms');
+const clearChecked = document.querySelector('.clear-complete');
 
-const todoList = document.querySelector('.task-list');
+document.addEventListener('DOMContentLoaded', Functionality.showStorage);
 
-todoData.forEach((data) => {
-  todoList.innerHTML += `
-  <div class="task" draggable="true">
-    <div class="update">
-      <input type="checkbox" id="complete" />
-      <p>${data.description}</p>
-    </div>
-    <div class="icons">
-      <i class="las la-ellipsis-v" id="move"></i>
-      <i class="las la-trash-alt" id="delete"></i>
-    </div>
-  </div>
-  `;
+form.addEventListener('submit', (e) => {
+  e.preventDefault();
+  const content = document.querySelector('#today-todo').value;
+  const dataIndex = Functionality.localGetItem();
+  let index;
+  if (dataIndex.length > 0) {
+    index = dataIndex[dataIndex.length - 1].index + 1;
+  } else {
+    index = 1;
+  }
+  const completed = false;
+  const errorMsg = document.querySelector('.warning');
+  if (content === '') {
+    errorMsg.innerText = 'Fill in this form!!!';
+  } else {
+    const todo = new TodoData(index, content, completed);
+    crud.addData(todo);
+    crud.displayData(todo);
+  }
+
+  document.querySelector('#today-todo').value = '';
 });
+
+clearChecked.addEventListener('click', Functionality.deleteComplete);

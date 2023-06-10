@@ -34,6 +34,13 @@ body {
   padding: 8px 5px;
 }
 
+.warning {
+  color: #f31111;
+  text-align: center;
+  font-size: 16px;
+  font-weight: 600;
+}
+
 .enter-task #forms {
   display: flex;
   align-items: center;
@@ -73,6 +80,10 @@ body {
   border-bottom: 1px solid #e2e0e0ea;
 }
 
+.active {
+  background: #fffeca;
+}
+
 .task.dragging :where(.update, i) {
   opacity: 0;
 }
@@ -81,6 +92,21 @@ body {
   display: flex;
   align-items: center;
   gap: 16px;
+}
+
+.updateDesc {
+  width: 590px;
+  height: 30px;
+  outline: none;
+  border: none;
+  background: transparent;
+  font-size: 16px;
+}
+
+.checked {
+  text-decoration: line-through;
+  color: gray;
+  font-style: italic;
 }
 
 .la-ellipsis-v,
@@ -93,6 +119,10 @@ body {
 }
 
 .la-trash-alt {
+  cursor: pointer;
+}
+
+.hidden {
   display: none;
 }
 
